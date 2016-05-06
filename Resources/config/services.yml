@@ -1,0 +1,5 @@
+services:
+    hawk_api.api:
+        class: Hawk\ApiBundle\Services\HawkApi
+        arguments:
+            - '@service_container'

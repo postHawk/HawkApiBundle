@@ -1,0 +1,26 @@
+{
+  "name": "postHawk/HawkApiBundle",
+  "type": "symfony-bundle",
+  "description": "Bundle for symfony based on post hawk api",
+  "keywords": ["post hawk", "api"],
+  "homepage": "https://github.com/postHawk/HawkApiBundle",
+  "license": "MIT",
+  "authors": [
+    {"name": "Barulin Maxim", "email": "mbarulin@gmail.com"}
+  ],
+  "require": {
+    "php": "~5.5|~7.0"
+  },
+  "require-dev": {
+    "friendsofsymfony/jsrouting-bundle": "dev-master"
+  },
+  "conflict": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Hawk\\ApiBundle\\": "src/Hawk/ApiBundle/lib"
+    }
+  },
+  "extra": {
+  }
+}
