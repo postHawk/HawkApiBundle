@@ -1,5 +1,5 @@
 {
-  "name": "postHawk/HawkApiBundle",
+  "name": "post-hawk/hawk-api-bundle",
   "type": "symfony-bundle",
   "description": "Bundle for symfony based on post hawk api",
   "keywords": ["post hawk", "api"],
