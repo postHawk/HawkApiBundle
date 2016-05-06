@@ -18,8 +18,9 @@
   },
   "autoload": {
     "psr-4": {
-      "Hawk\\ApiBundle\\": "src/Hawk/ApiBundle/lib"
-    }
+      "Hawk\\ApiBundle\\": ""
+    },
+    "classmap": ["lib/"]
   },
   "extra": {
   }
