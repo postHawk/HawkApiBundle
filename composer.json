@@ -12,7 +12,8 @@
     "php": "~5.5|~7.0"
   },
   "require-dev": {
-    "friendsofsymfony/jsrouting-bundle": "dev-master"
+    "friendsofsymfony/jsrouting-bundle": "dev-master",
+    "post-hawk/hawk-api": "dev-master"
   },
   "conflict": {
   },
