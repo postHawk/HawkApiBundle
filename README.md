@@ -39,3 +39,46 @@ hawk:
 ```html
 <script src="{{ asset('/bundles/hawkapi/js/hawk_api.js') }}"></script>
 ```
+###Использование
+```php
+$api = $this->get('hawk_api.api')->getApi();
+$api
+    ->registerUser($id)
+    ->getToken($id, $this->getApi()->getSalt())
+    ->execute()
+    ->getResult('getToken')
+;
+```
+
+```javascript
+$.post(Routing.generate('hawk_token'), {}, function (data) {
+    if(data.errors === false)
+    {
+        HAWK_API.init({
+            user_id: data.result.id,
+            token: data.result.token,
+            url: data.result.ws,
+            debug: true
+        });
+
+        HAWK_API.unbind_handler('new_push');
+        HAWK_API.bind_handler('new_push', function(e, msg){
+            if(msg.from === 'hawk_client')
+            {
+                return;
+            }
+
+            //делаем что-нибудь
+        });
+    }
+    else
+    {
+        if(data.errors !== 'no_user')
+        {
+            console.error(data.errors);
+        }
+    }
+});
+```
+
+Про методы, доступные для использования вы можете прочесть в [документации](https://github.com/postHawk/hawk_api/wiki)
