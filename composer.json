@@ -9,11 +9,12 @@
     {"name": "Barulin Maxim", "email": "mbarulin@gmail.com"}
   ],
   "require": {
-    "php": "~5.5|~7.0"
-  },
-  "require-dev": {
+    "php": "~5.5|~7.0",
     "friendsofsymfony/jsrouting-bundle": "dev-master",
     "post-hawk/hawk-api": "dev-master"
+  },
+  "require-dev": {
+    
   },
   "conflict": {
   },
