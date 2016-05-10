@@ -2,7 +2,7 @@
 namespace Hawk\ApiBundle\Services;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use \Hawk\ApiBundle\HawkApi as BaseApi;
+use Hawk\Api\HawkApi as BaseApi;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class HawkApi

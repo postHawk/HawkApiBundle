@@ -2,7 +2,7 @@
 
 namespace Hawk\ApiBundle\Controller;
 
-use Hawk\ApiBundle\HawkApi;
+use Hawk\Api\HawkApi;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
