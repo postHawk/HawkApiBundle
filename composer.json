@@ -8,6 +8,7 @@
   "authors": [
     {"name": "Barulin Maxim", "email": "mbarulin@gmail.com"}
   ],
+  "minimum-stability": "dev",
   "require": {
     "php": "~5.5|~7.0",
     "friendsofsymfony/jsrouting-bundle": "dev-master",
