@@ -11,11 +11,10 @@
   "minimum-stability": "dev",
   "require": {
     "php": "~5.5|~7.0",
-    "friendsofsymfony/jsrouting-bundle": "dev-master",
-    "post-hawk/hawk-api": "dev-master"
+    "friendsofsymfony/jsrouting-bundle": "dev-master"
   },
   "require-dev": {
-    
+    "post-hawk/hawk-api": "dev-master"
   },
   "conflict": {
   },
