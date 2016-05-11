@@ -14,7 +14,7 @@
     "friendsofsymfony/jsrouting-bundle": "dev-master"
   },
   "require-dev": {
-    "post-hawk/hawk-api": "dev-master"
+    "post-hawk/hawk-api": "~1.0@dev"
   },
   "conflict": {
   },
