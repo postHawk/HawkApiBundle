@@ -98,4 +98,20 @@ class HawkApi
     {
         $this->salt = $salt;
     }
+
+    /**
+     * @return UserInterface
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param UserInterface $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 }
