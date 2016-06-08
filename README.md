@@ -49,6 +49,41 @@ $api
     ->getResult('getToken')
 ;
 ```
+или так:
+```php
+$msg = new Message();
+$msg
+	->setFrom('mail_demon')
+	->setTo($this->getUser())
+	->setText(['msg' => 'test'])
+	->setEvent('new_push')
+;
+
+$gMessage = new GroupMessage();
+$gMessage
+	->setFrom('mail_demon')
+	->setGroups(['groups'])
+	->setText(['msg' => 'test'])
+	->setEvent('event')
+;
+
+$this
+	->container
+	->get('event_dispatcher')
+	->dispatch(Message::NEW_MESSAGE, $msg)
+	->getResult() //HawkApi
+	->getResult()
+;
+
+$this
+	->container
+	->get('event_dispatcher')
+	->dispatch(GroupMessage::NEW_MESSAGE, $gMessage)
+	->getResult() //HawkApi
+	->getResult()
+;
+
+```
 
 ```javascript
 $.post(Routing.generate('hawk_token'), {}, function (data) {
