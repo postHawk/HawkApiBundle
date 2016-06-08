@@ -109,9 +109,12 @@ class HawkApi
 
     /**
      * @param UserInterface $user
+     * @return $this
      */
-    public function setUser($user)
+    public function setUser(UserInterface $user)
     {
         $this->user = $user;
+
+        return $this;
     }
 }

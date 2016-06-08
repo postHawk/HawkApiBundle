@@ -3,3 +3,9 @@ services:
         class: Hawk\ApiBundle\Services\HawkApi
         arguments:
             - '@service_container'
+    hawk_api.listener.mesasge_sender:
+        class: Hawk\ApiBundle\EventListener\MessageSubscriber
+        calls:
+            - [ setApi, ['@hawk_api.api']]
+        tags:
+            - { name: kernel.event_subscriber }
