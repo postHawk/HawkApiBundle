@@ -22,6 +22,7 @@ ln -s web\bundles\hawkapi vendor\post-hawk\hawk-api\Resources\public\
 ###Кофигурация:
 
 ```php
+//app/AppKernel.php
 $bundles = array(
 	...
     new Hawk\ApiBundle\HawkApiBundle(),
