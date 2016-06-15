@@ -20,6 +20,14 @@ ln -s web\bundles\hawkapi vendor\post-hawk\hawk-api\Resources\public\
 ```
 
 ###Кофигурация:
+
+```php
+$bundles = array(
+	...
+    new Hawk\ApiBundle\HawkApiBundle(),
+);
+```
+
 ```yml
 #app/config/config.yml
 hawk_api:
