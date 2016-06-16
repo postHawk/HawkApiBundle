@@ -81,7 +81,7 @@ $this
 	->get('event_dispatcher')
 	->dispatch(Message::NEW_MESSAGE, $msg)
 	->getResult() //HawkApi
-	->getResult()
+	->getResult('sendMessage')
 ;
 
 $this
@@ -89,7 +89,7 @@ $this
 	->get('event_dispatcher')
 	->dispatch(GroupMessage::NEW_MESSAGE, $gMessage)
 	->getResult() //HawkApi
-	->getResult()
+	->getResult('sendGroupMessage')
 ;
 
 ```
