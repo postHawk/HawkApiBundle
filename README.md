@@ -20,6 +20,15 @@ ln -s web\bundles\hawkapi vendor\post-hawk\hawk-api\Resources\public\
 ```
 
 ###Кофигурация:
+
+```php
+//app/AppKernel.php
+$bundles = array(
+	...
+    new Hawk\ApiBundle\HawkApiBundle(),
+);
+```
+
 ```yml
 #app/config/config.yml
 hawk_api:
@@ -72,7 +81,7 @@ $this
 	->get('event_dispatcher')
 	->dispatch(Message::NEW_MESSAGE, $msg)
 	->getResult() //HawkApi
-	->getResult()
+	->getResult('sendMessage')
 ;
 
 $this
@@ -80,7 +89,7 @@ $this
 	->get('event_dispatcher')
 	->dispatch(GroupMessage::NEW_MESSAGE, $gMessage)
 	->getResult() //HawkApi
-	->getResult()
+	->getResult('sendGroupMessage')
 ;
 
 ```
