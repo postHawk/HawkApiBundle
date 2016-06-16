@@ -15,21 +15,29 @@ class HawkController extends Controller
      */
     private $api = null;
 
-    
 
     /**
-     * @Route("/token", name="hawk_token", options={"expose":true})
+     * @Route("/token/{useSessionId}", name="hawk_token", defaults={"useSessionId": false}, options={"expose":true})
      * @param Request $request
+     * @param bool $useSessionId использвоать id сессии
      * @return JsonResponse
      * @throws \Exception
      */
-    public function getTokenAction(Request $request)
+    public function getTokenAction(Request $request, $useSessionId = false)
     {
         $result = null;
-        if($this->getUser())
+        $id = null;
+        if($useSessionId)
+        {
+            $id = $this->container->get('session')->getId();
+        }
+        else
         {
             $id = $this->getApi()->getUserId();
+        }
 
+        if($id)
+        {
             $token = $this
                 ->getApi()
                 ->registerUser($id)
@@ -40,16 +48,37 @@ class HawkController extends Controller
 
             if(!$this->getApi()->hasErrors() && isset($token[0]['result']))
             {
-                $result = [
-                    'result' => [
-                        'token' => $token[0]['result'][$request->getHost()],
-                        'id' => $id,
-                        'ws' => 'ws' . ($this->container->getParameter('hawk_api.client.https') ? 's' : '')
-                            . '://' . $this->container->getParameter('hawk_api.client.host')
-                            . ':' . $this->container->getParameter('hawk_api.client.port')
-                    ],
-                    'errors' => false
-                ];
+                $result = $token[0]['result'];
+                $key = $request->getHost();
+                if(!isset($result[$key]))
+                {
+                    $key = $key . ':' . $request->getPort();
+                    if(!isset($result[$key]))
+                    {
+                        $key = key($result);
+                    }
+                }
+
+                if(isset($result[$key]))
+                {
+                    $result = [
+                        'result' => [
+                            'token' => $result[$key],
+                            'id' => $id,
+                            'ws' => 'ws' . ($this->container->getParameter('hawk_api.client.https') ? 's' : '')
+                                . '://' . $this->container->getParameter('hawk_api.client.host')
+                                . ':' . $this->container->getParameter('hawk_api.client.port')
+                        ],
+                        'errors' => false
+                    ];
+                }
+                else
+                {
+                    $result = [
+                        'result' => false,
+                        'errors' => 'Не удаётся определить текущий хост'
+                    ];
+                }
             }
             elseif ($this->getApi()->hasErrors())
             {

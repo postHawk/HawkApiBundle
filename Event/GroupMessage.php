@@ -43,7 +43,7 @@ class GroupMessage extends Event
      * На какие домены
      * @var String
      */
-    private $domains = null;
+    private $domains = [];
 
     /**
      * @var HawkApi
