@@ -61,13 +61,14 @@ class HawkController extends Controller
 
                 if(isset($result[$key]))
                 {
+                    $port = $this->container->getParameter('hawk_api.client.port');
                     $result = [
                         'result' => [
                             'token' => $result[$key],
                             'id' => $id,
                             'ws' => 'ws' . ($this->container->getParameter('hawk_api.client.https') ? 's' : '')
                                 . '://' . $this->container->getParameter('hawk_api.client.host')
-                                . ':' . $this->container->getParameter('hawk_api.client.port')
+                                . (($port) ?  ':' . $port : '')
                         ],
                         'errors' => false
                     ];
